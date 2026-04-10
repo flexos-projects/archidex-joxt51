@@ -1,3 +1,160 @@
+---
+id: doc-design
+title: Archidex — Design
+type: doc
+subtype: design
+status: published
+sequence: 6
+createdAt: "2026-04-10T21:02:21.436Z"
+updatedAt: "2026-04-10T21:02:21.436Z"
+---
+
+# Design
+
+Archidex is a digital field guide. The design language must bridge two worlds: the historic, physical reality of architecture, and the precise, gamified nature of a collection app. 
+
+The visual identity is rooted in the aesthetics of architectural drafting and blueprints. The interface feels highly structured, governed by clear grids, visible hairlines, and precise spacing. It avoids the soft, bubbly, heavily shadowed look of typical consumer apps. Instead, corners have tighter radii (`--radius-sm` or `--radius-md`), mimicking the sharp intersections of buildings.
+
+In Dark Mode (the default "Blueprint" theme), backgrounds are a deep, inky navy blue, not standard black. Accents are electric cyan and drafting-pencil yellow, making annotations and UI elements pop like chalk on a blueprint. In Light Mode (the "Drafting Paper" theme), the background is a warm, textured cream, with deep charcoal text and terracotta accents, evoking classic reference books and masonry.
+
+Typography is critical. The display font is a structured, geometric sans-serif (Space Grotesk or Archivo) that looks like it could be on an engineering diagram. The body font is highly legible (Inter), while data points (GPS coordinates, eras, confidence scores) use a monospace font to emphasize precision.
+
+Photography is treated as the hero. UI elements overlaying photos (like the scanner reticle or annotations) are crisp, thin, and utilitarian. The app should feel like a piece of high-end specialized equipment—a tricorder for design nerds.
+
+<flex_block type="tokens">
+{
+  "category": "colors",
+  "mode": "dark",
+  "tokens": {
+    "--color-primary": "oklch(75% 0.15 230)",
+    "--color-primary-hover": "oklch(80% 0.15 230)",
+    "--color-primary-active": "oklch(70% 0.15 230)",
+    "--color-primary-muted": "oklch(75% 0.15 230 / 0.15)",
+    "--color-accent": "oklch(85% 0.18 90)",
+    "--color-bg": "oklch(18% 0.04 250)",
+    "--color-surface": "oklch(23% 0.04 250)",
+    "--color-surface-raised": "oklch(28% 0.03 250)",
+    "--color-surface-overlay": "oklch(15% 0.04 250 / 0.8)",
+    "--color-border": "oklch(35% 0.03 250)",
+    "--color-border-subtle": "oklch(28% 0.03 250)",
+    "--color-text": "oklch(95% 0.01 250)",
+    "--color-text-secondary": "oklch(75% 0.02 250)",
+    "--color-text-muted": "oklch(60% 0.02 250)",
+    "--color-text-on-primary": "oklch(15% 0.04 250)",
+    "--color-success": "oklch(75% 0.12 160)",
+    "--color-warning": "oklch(85% 0.18 90)",
+    "--color-error": "oklch(65% 0.15 25)"
+  }
+}
+</flex_block>
+
+<flex_block type="tokens">
+{
+  "category": "colors",
+  "mode": "light",
+  "tokens": {
+    "--color-primary": "oklch(45% 0.12 250)",
+    "--color-primary-hover": "oklch(40% 0.12 250)",
+    "--color-primary-active": "oklch(35% 0.12 250)",
+    "--color-primary-muted": "oklch(45% 0.12 250 / 0.12)",
+    "--color-accent": "oklch(55% 0.15 45)",
+    "--color-bg": "oklch(97% 0.01 85)",
+    "--color-surface": "oklch(99% 0.005 85)",
+    "--color-surface-raised": "oklch(100% 0 0)",
+    "--color-surface-overlay": "oklch(95% 0.01 85 / 0.8)",
+    "--color-border": "oklch(85% 0.01 85)",
+    "--color-border-subtle": "oklch(90% 0.01 85)",
+    "--color-text": "oklch(25% 0.02 250)",
+    "--color-text-secondary": "oklch(45% 0.02 250)",
+    "--color-text-muted": "oklch(60% 0.02 250)",
+    "--color-text-on-primary": "oklch(98% 0 0)",
+    "--color-success": "oklch(50% 0.12 160)",
+    "--color-warning": "oklch(60% 0.15 45)",
+    "--color-error": "oklch(55% 0.15 25)"
+  }
+}
+</flex_block>
+
+<flex_block type="tokens">
+{
+  "category": "typography",
+  "tokens": {
+    "--font-display": "'Space Grotesk', system-ui, sans-serif",
+    "--font-body": "'Inter', system-ui, sans-serif",
+    "--font-mono": "'JetBrains Mono', monospace",
+    "--font-size-xs": "0.75rem",
+    "--font-size-sm": "0.875rem",
+    "--font-size-base": "1rem",
+    "--font-size-lg": "1.125rem",
+    "--font-size-xl": "1.25rem",
+    "--font-size-2xl": "1.5rem",
+    "--font-size-3xl": "2rem",
+    "--font-size-4xl": "2.5rem",
+    "--font-size-5xl": "3.5rem",
+    "--font-weight-normal": "400",
+    "--font-weight-medium": "500",
+    "--font-weight-bold": "700",
+    "--line-height-tight": "1.1",
+    "--line-height-normal": "1.5",
+    "--line-height-relaxed": "1.7"
+  }
+}
+</flex_block>
+
+<flex_block type="tokens">
+{
+  "category": "spacing",
+  "tokens": {
+    "--space-1": "0.25rem",
+    "--space-2": "0.5rem",
+    "--space-3": "0.75rem",
+    "--space-4": "1rem",
+    "--space-6": "1.5rem",
+    "--space-8": "2rem",
+    "--space-12": "3rem",
+    "--space-16": "4rem",
+    "--space-24": "6rem"
+  }
+}
+</flex_block>
+
+<flex_block type="tokens">
+{
+  "category": "radii",
+  "tokens": {
+    "--radius-sm": "0.25rem",
+    "--radius-md": "0.5rem",
+    "--radius-lg": "0.75rem",
+    "--radius-xl": "1rem",
+    "--radius-full": "9999px"
+  }
+}
+</flex_block>
+
+<flex_block type="tokens">
+{
+  "category": "shadows",
+  "tokens": {
+    "--shadow-sm": "0 2px 4px oklch(0% 0 0 / 0.1)",
+    "--shadow-md": "0 4px 12px oklch(0% 0 0 / 0.15), 0 1px 3px oklch(0% 0 0 / 0.08)",
+    "--shadow-lg": "0 12px 32px oklch(0% 0 0 / 0.2), 0 4px 8px oklch(0% 0 0 / 0.1)"
+  }
+}
+</flex_block>
+
+<flex_block type="tokens">
+{
+  "category": "transitions",
+  "tokens": {
+    "--transition-fast": "150ms ease-out",
+    "--transition-base": "250ms ease-out",
+    "--transition-slow": "400ms cubic-bezier(0.2, 0.8, 0.2, 1)",
+    "--ease-spring": "cubic-bezier(0.34, 1.56, 0.64, 1)"
+  }
+}
+</flex_block>
+
+<flex_block type="mockup-html" id="landing-preview">
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
@@ -471,3 +628,139 @@
   </script>
 </body>
 </html>
+</flex_block>
+
+---
+
+<flex_block type="tokens" id="blk-001" name="colors">
+{
+  "category": "colors",
+  "mode": "dark",
+  "tokens": {
+    "--color-primary": "oklch(75% 0.15 230)",
+    "--color-primary-hover": "oklch(80% 0.15 230)",
+    "--color-primary-active": "oklch(70% 0.15 230)",
+    "--color-primary-muted": "oklch(75% 0.15 230 / 0.15)",
+    "--color-accent": "oklch(85% 0.18 90)",
+    "--color-bg": "oklch(18% 0.04 250)",
+    "--color-surface": "oklch(23% 0.04 250)",
+    "--color-surface-raised": "oklch(28% 0.03 250)",
+    "--color-surface-overlay": "oklch(15% 0.04 250 / 0.8)",
+    "--color-border": "oklch(35% 0.03 250)",
+    "--color-border-subtle": "oklch(28% 0.03 250)",
+    "--color-text": "oklch(95% 0.01 250)",
+    "--color-text-secondary": "oklch(75% 0.02 250)",
+    "--color-text-muted": "oklch(60% 0.02 250)",
+    "--color-text-on-primary": "oklch(15% 0.04 250)",
+    "--color-success": "oklch(75% 0.12 160)",
+    "--color-warning": "oklch(85% 0.18 90)",
+    "--color-error": "oklch(65% 0.15 25)"
+  }
+}
+</flex_block>
+
+<flex_block type="tokens" id="blk-002" name="colors">
+{
+  "category": "colors",
+  "mode": "light",
+  "tokens": {
+    "--color-primary": "oklch(45% 0.12 250)",
+    "--color-primary-hover": "oklch(40% 0.12 250)",
+    "--color-primary-active": "oklch(35% 0.12 250)",
+    "--color-primary-muted": "oklch(45% 0.12 250 / 0.12)",
+    "--color-accent": "oklch(55% 0.15 45)",
+    "--color-bg": "oklch(97% 0.01 85)",
+    "--color-surface": "oklch(99% 0.005 85)",
+    "--color-surface-raised": "oklch(100% 0 0)",
+    "--color-surface-overlay": "oklch(95% 0.01 85 / 0.8)",
+    "--color-border": "oklch(85% 0.01 85)",
+    "--color-border-subtle": "oklch(90% 0.01 85)",
+    "--color-text": "oklch(25% 0.02 250)",
+    "--color-text-secondary": "oklch(45% 0.02 250)",
+    "--color-text-muted": "oklch(60% 0.02 250)",
+    "--color-text-on-primary": "oklch(98% 0 0)",
+    "--color-success": "oklch(50% 0.12 160)",
+    "--color-warning": "oklch(60% 0.15 45)",
+    "--color-error": "oklch(55% 0.15 25)"
+  }
+}
+</flex_block>
+
+<flex_block type="tokens" id="blk-003" name="typography">
+{
+  "category": "typography",
+  "tokens": {
+    "--font-display": "'Space Grotesk', system-ui, sans-serif",
+    "--font-body": "'Inter', system-ui, sans-serif",
+    "--font-mono": "'JetBrains Mono', monospace",
+    "--font-size-xs": "0.75rem",
+    "--font-size-sm": "0.875rem",
+    "--font-size-base": "1rem",
+    "--font-size-lg": "1.125rem",
+    "--font-size-xl": "1.25rem",
+    "--font-size-2xl": "1.5rem",
+    "--font-size-3xl": "2rem",
+    "--font-size-4xl": "2.5rem",
+    "--font-size-5xl": "3.5rem",
+    "--font-weight-normal": "400",
+    "--font-weight-medium": "500",
+    "--font-weight-bold": "700",
+    "--line-height-tight": "1.1",
+    "--line-height-normal": "1.5",
+    "--line-height-relaxed": "1.7"
+  }
+}
+</flex_block>
+
+<flex_block type="tokens" id="blk-004" name="spacing">
+{
+  "category": "spacing",
+  "tokens": {
+    "--space-1": "0.25rem",
+    "--space-2": "0.5rem",
+    "--space-3": "0.75rem",
+    "--space-4": "1rem",
+    "--space-6": "1.5rem",
+    "--space-8": "2rem",
+    "--space-12": "3rem",
+    "--space-16": "4rem",
+    "--space-24": "6rem"
+  }
+}
+</flex_block>
+
+<flex_block type="tokens" id="blk-005" name="radii">
+{
+  "category": "radii",
+  "tokens": {
+    "--radius-sm": "0.25rem",
+    "--radius-md": "0.5rem",
+    "--radius-lg": "0.75rem",
+    "--radius-xl": "1rem",
+    "--radius-full": "9999px"
+  }
+}
+</flex_block>
+
+<flex_block type="tokens" id="blk-006" name="shadows">
+{
+  "category": "shadows",
+  "tokens": {
+    "--shadow-sm": "0 2px 4px oklch(0% 0 0 / 0.1)",
+    "--shadow-md": "0 4px 12px oklch(0% 0 0 / 0.15), 0 1px 3px oklch(0% 0 0 / 0.08)",
+    "--shadow-lg": "0 12px 32px oklch(0% 0 0 / 0.2), 0 4px 8px oklch(0% 0 0 / 0.1)"
+  }
+}
+</flex_block>
+
+<flex_block type="tokens" id="blk-007" name="transitions">
+{
+  "category": "transitions",
+  "tokens": {
+    "--transition-fast": "150ms ease-out",
+    "--transition-base": "250ms ease-out",
+    "--transition-slow": "400ms cubic-bezier(0.2, 0.8, 0.2, 1)",
+    "--ease-spring": "cubic-bezier(0.34, 1.56, 0.64, 1)"
+  }
+}
+</flex_block>

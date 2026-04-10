@@ -1,9 +1,23 @@
 {
-  "name": "{{project_name}}",
-  "slug": "{{project_slug}}",
-  "color": "{{project_color}}",
-  "ownerId": null,
-  "ownerEmail": null,
-  "createdAt": "{{created_at}}",
-  "version": "0.1.0"
+  "name": "Archidex",
+  "slug": "archidex",
+  "tagline": "The field guide to the built world",
+  "description": "Point your camera at any building to instantly identify its architectural style. Collect cities, learn the language of design, and see the streets with new eyes.",
+  "seedId": "WSCRJw2gkQ51XwHsTJVO",
+  "brand": {
+    "color": "#2563eb",
+    "personality": [
+      "curious",
+      "academic but accessible",
+      "tactile",
+      "observant"
+    ],
+    "values": [
+      "the world is a museum",
+      "knowledge should be collected",
+      "look up"
+    ]
+  },
+  "createdAt": "2026-04-10T21:02:21.436Z",
+  "version": "2.0"
 }
