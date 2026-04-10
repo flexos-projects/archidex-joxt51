@@ -1,35 +1,64 @@
 ---
 id: doc-content
-title: Archidex — Content
+title: "Content & Copy"
 type: doc
-subtype: content
-status: published
-sequence: 8
-createdAt: "2026-04-10T21:02:21.436Z"
-updatedAt: "2026-04-10T21:02:21.436Z"
+status: active
+createdAt: "2026-04-10"
+relatesTo: ["docs/001-vision.md", "docs/004-database.md"]
 ---
 
-# Content
+# 8. Content & Copy
 
-Archidex requires a robust, accurate canonical database at launch. The "Field Guide" needs to feel complete even before the user starts collecting.
+Content is the lifeblood of Archidex. The app's success depends on having a robust, accurate, and engaging database of architectural knowledge from day one. This document outlines the content requirements and the voice and tone guidelines.
+
+## Content Voice & Tone
+
+The voice of Archidex is that of a passionate, knowledgeable tour guide. It is "academic but accessible." It must avoid dry, pedantic language in favor of snappy, story-driven descriptions that focus on visual identification.
+
+- **DO:** "Look for the massive, raw concrete and the sense of heavy, unapologetic weight."
+- **DON'T:** "Brutalism emerged in the mid-20th century as a response to the perceived failure of Modernism..."
+
+- **DO:** Use precise terminology, but define it immediately. "Notice the *rustication*—the rough, deliberately unfinished stonework on the ground floor."
+- **DON'T:** Assume the user knows what a *pediment* is.
+
+## Content Inventory
+
+This is the list of all content that needs to be created before the app can launch.
 
 <flex_block type="content-inventory">
 {
   "have": [
-    { "type": "concept", "source": "founder", "notes": "The Pokedex metaphor perfectly defines the collection mechanics and UI flow." }
+    { "type": "concept", "source": "seed", "notes": "The Pokedex metaphor perfectly defines the collection mechanics and UI flow." },
+    { "type": "copy", "source": "seed", "notes": "Core marketing copy and tagline ('The field guide to the built world') are well-defined."}
   ],
   "need": [
-    { "type": "data", "description": "A canonical list of 50-80 architectural styles with eras, descriptions, and defining features." },
-    { "type": "data", "description": "A glossary of 150+ architectural terms (corbel, pediment, entablature, etc.)." },
-    { "type": "assets", "description": "Vector illustrations for the glossary terms (blueprint/line-art style)." },
-    { "type": "assets", "description": "Silhouette SVGs for the undiscovered styles in the Field Guide." },
-    { "type": "copy", "description": "Marketing landing page copy focusing on discovery, learning, and collection." },
-    { "type": "copy", "description": "Milestone logic and copy (e.g., 'Modernist Master', 'Gothic Ghost')." },
-    { "type": "assets", "description": "Digital 'Stamps' (graphics) awarded for completing milestones." }
+    { "type": "data", "description": "A canonical list of 50-80 architectural styles to populate the 'Styles' collection. Each needs an era, a concise historical description, and a list of key visual features." },
+    { "type": "data", "description": "A glossary of 150+ architectural terms to populate the 'Elements' collection. Each needs a simple definition and category." },
+    { "type": "assets", "description": "Vector illustrations for all 150+ glossary terms. Must be in a clean, blueprint/line-art style." },
+    { "type": "assets", "description": "Silhouette SVGs for the 50-80 undiscovered styles in the Field Guide. These should be evocative but mysterious." },
+    { "type": "copy", "description": "Onboarding copy for new users, explaining the core loop of Scan, Learn, Collect." },
+    { "type": "copy", "description": "Logic, titles, and descriptions for at least 20 launch 'Milestones' (e.g., 'Concrete Jungle', 'Gothic Ghost', 'Modernist Master')." },
+    { "type": "assets", "description": "A unique, beautifully designed digital 'Stamp' graphic for each of the 20 launch milestones." }
   ]
 }
 </flex_block>
 
-The voice of the content is crucial. Architectural history can easily become dry and pedantic. Archidex content must be snappy, story-driven, and focused on visual identification. "Look for the massive, raw concrete and the sense of heavy, unapologetic weight" rather than "Brutalism emerged in the mid-20th century as a response to...".
+## Key Content-Related Risks & Alerts
 
----
+The following are critical considerations derived from the full product specification that directly impact the user experience and technical implementation.
+
+- **ALERT: AI Latency & UX**
+  - **The Risk:** The time between capturing a photo and receiving the AI response could be 2-4 seconds. If the UI freezes, it will feel broken.
+  - **The Mitigation:** The app *must* have an engaging "scanning" animation to mask this latency. This makes the app feel like it's "working hard" rather than "loading slowly."
+
+- **ALERT: AI Hallucinations & False Positives**
+  - **The Risk:** Buildings are often a mix of styles. An AI might misclassify a building or hallucinate details. This would erode user trust.
+  - **The Mitigation:** The AI prompt needs to handle ambiguity gracefully, perhaps by returning a "Primary Style" and "Secondary Influences." The canonical descriptions of styles in our database should be human-vetted and pre-written, not generated by the LLM on the fly. Only the *image analysis* should be dynamic.
+
+- **ALERT: Offline Capability**
+  - **The Risk:** Users will be exploring, often in areas with poor data service or while traveling internationally without a data plan. A failed capture is a moment of deep frustration.
+  - **The Mitigation:** As defined in the Technical Spec, captures *must* save locally first (photo, GPS, timestamp) and queue for analysis. The analysis and collection sync happens when the user is back online.
+
+- **ALERT: Content Accuracy**
+  - **The Risk:** The core value proposition is learning. If our architectural history is wrong, the app is useless.
+  - **The Mitigation:** The initial population of the `Styles` and `Elements` collections must be done by a subject matter expert or meticulously cross-referenced with reliable architectural sources. We cannot rely on an LLM to generate this foundational data.
